@@ -1,0 +1,87 @@
+/* Assets
+--------------------------------------------- */
+@import "assets/assets";
+
+/* Browse Preview
+--------------------------------------------- */
+@import "browse-preview/browse-preview";
+
+/* Carousel
+--------------------------------------------- */
+@import "carousel/carousel";
+
+/* Collecting
+--------------------------------------------- */
+@import "collecting/collecting";
+
+/* Item With metadata
+--------------------------------------------- */
+@import "item-with-metadata/item-with-metadata";
+
+/* Media Embed
+--------------------------------------------- */
+@import "media-embed/media-embed";
+
+/* Table of contents
+--------------------------------------------- */
+@import "table-of-contents/table-of-contents";
+
+/* List of sites
+--------------------------------------------- */
+@import "list-of-sites/list-of-sites";
+
+/* Timeline
+--------------------------------------------- */
+@import "timeline/timeline";
+
+/* Groups
+--------------------------------------------- */
+@import "groups/image-hover-text";
+@import "groups/curve-worm";
+
+/* HTML
+--------------------------------------------- */
+@import "html/html";
+
+.has-background {
+    border-radius: 15px;
+    padding: 50px 30px;
+
+    &.white {
+        background-color: $color__bg-body;
+    }
+
+    &.complementary {
+        background-color: $color__complementary;
+
+        * {
+            color: $color__complementary-contrast;
+        }
+    }
+
+    &.secondary {
+        background-color: $color__secondary;
+
+        * {
+            color: $color__secondary-contrast;
+        }
+    }
+
+    &.primary {
+        background-color: $color__primary;
+
+        * {
+            color: $color__primary-contrast;
+        }
+    }
+}
+
+.dark-background {
+    h1, h2, h3 {
+        color: $color__primary;
+    }
+
+    h4, h5, h6, p {
+        color: $color__white;
+    }
+}

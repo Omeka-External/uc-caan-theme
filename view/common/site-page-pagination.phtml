@@ -1,0 +1,6 @@
+<?php if ($prevPage || $nextPage): ?>
+<div class="site-page-pagination">
+    <?php echo $prevPage ? $this->hyperlink('< ' . $prevPage->title(), $prevPage->siteUrl()) : ''; ?>
+    <?php echo $nextPage ? $this->hyperlink($nextPage->title() . ' >', $nextPage->siteUrl()) : ''; ?>
+</div>
+<?php endif; ?>

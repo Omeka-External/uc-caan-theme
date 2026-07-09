@@ -1,0 +1,102 @@
+.main-banner {
+    position: relative;
+    margin-bottom: 1rem;
+
+    @media (min-width: $lg) {
+        overflow-y: visible;
+    }
+
+    &__image {
+        margin: 0;
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+
+        img {
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+        }
+
+        figcaption {
+            background-color: $color__primary;
+            border-radius: 0 15px 15px 0;
+            bottom: 30px;
+            color: $color__primary-contrast;
+            font-size: $font__xs-size;
+            font-weight: 500;
+            left: 0;
+            max-width: 90%;
+            position: absolute;
+            right: auto;
+
+            @media (min-width: $lg) {
+                border-radius: 15px;
+                font-size: $font__sm-size;
+                left: auto;
+                max-width: 40%;
+                right: 40px;
+            }
+
+            &:not(.has-link) {
+                padding: 15px 20px;
+            }
+
+            &.has-link {
+                @include animate-hover(5px);
+                
+                a {
+                    @include arrow;
+                    display: inline-flex;
+                    align-items: center;
+                    color: inherit;
+                    gap: 20px;
+                    padding: 15px 20px;
+                    text-decoration: inherit;
+                }
+            }
+        }
+    }
+
+    &__content {
+        background-color: color-mix(in srgb, $color__secondary 80%, transparent);
+        padding: 10px 20px;
+        position: absolute;
+        left: 0;
+        max-width: 50%;
+        top: 50%;
+        transform: translateY(-40%);
+
+        @media (min-width: $lg) {
+            bottom: 30px;
+            max-width: none;
+            top: auto;
+            transform: none;
+        }
+    }
+
+    &__heading {
+        color: $color__primary;
+        font-size: 1.75rem;
+        font-weight: 500;
+        margin-bottom: 0;
+
+        @media (min-width: $xl) {
+            font-size: 2.5rem;
+        }
+
+        @media (min-width: $xxl) {
+            font-size: 3.125rem;
+        }
+    }
+
+    &__subheading {
+        color: $color__white;
+        font-size: 1rem;
+        margin-bottom: 0;
+
+        @media (min-width: $xl) {
+            font-size: 1.25rem;
+        }
+    }
+}

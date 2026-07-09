@@ -1,0 +1,58 @@
+<?php
+$bannerHeading = $this->themeSetting('banner_heading');
+$bannerSubheading = $this->themeSetting('banner_subheading');
+
+$banners = [];
+
+for ( $i = 1; $i <= 3; $i++ ) {
+    $image = $this->themeSettingAsset( "banner_image_{$i}" );
+
+    if ( ! $image ) {
+        continue;
+    }
+
+    $banners[] = [
+        'image'   => $image,
+        'caption' => $this->themeSetting( "banner_image_{$i}_caption" ),
+        'url'     => $this->themeSetting( "banner_image_{$i}_url" ),
+    ];
+}
+
+$banner = $banners[ array_rand( $banners ) ];
+
+$class = ['main-banner'];
+?>
+
+<?php if (! empty( $banner['image'] )) : ?>
+    <div class="<?php echo implode(' ', $class); ?>">
+
+        <figure class="main-banner__image">
+            <img
+                src="<?php echo $this->escapeHtmlAttr( $banner['image']->assetUrl() ); ?>"
+                alt="Main banner image"
+            >
+
+            <?php if ( $banner['caption'] ) : ?>
+                <figcaption class="<?= $banner['url'] ? 'has-link' : ''; ?>">
+                    <?php if ( $banner['url'] ) : ?>
+                        <a href="<?php echo $this->escapeHtmlAttr( $banner['url'] ); ?>">
+                            <?php echo nl2br($this->escapeHtml( $banner['caption'] )); ?>
+                        </a>
+                    <?php else : ?>
+                        <?php echo nl2br($this->escapeHtml( $banner['caption'] )); ?>
+                    <?php endif; ?>
+                </figcaption>
+            <?php endif; ?>
+        </figure>
+
+        <div class="main-banner__content">
+            <h1 class="main-banner__heading">
+                <?php echo $this->escapeHtml($bannerHeading); ?>
+            </h1>
+            <p class="main-banner__subheading">
+                <?php echo $this->escapeHtml($bannerSubheading); ?>
+            </p>
+        </div>
+
+    </div>
+<?php endif; ?>

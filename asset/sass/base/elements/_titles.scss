@@ -1,0 +1,24 @@
+.title,
+.block-pageTitle {
+    display: inline-block;
+    position: relative;
+
+    .title {
+        margin-bottom: 0 !important;
+        padding-left: 0;
+
+        &::before {
+            content: none;
+        }
+    }
+
+    .slick-slide & {
+        &::before {
+            content: none;
+        }
+    }
+
+    &.has-background {
+        padding-right: 10px;
+    }
+}

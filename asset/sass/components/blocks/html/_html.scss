@@ -1,0 +1,13 @@
+.block-html {
+    &.text-secondary {
+        color: $color__secondary;
+    }
+
+    &.text-primary {
+        color: $color__primary;
+    }
+
+    &.text-complementary {
+        color: $color__complementary;
+    }
+}

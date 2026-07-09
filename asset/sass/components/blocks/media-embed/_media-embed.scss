@@ -1,0 +1,176 @@
+.media-embed {
+    margin-bottom: 3rem;
+
+    .item.resource {
+        display: inline-flex;
+        border-radius: 15px;
+        flex-direction: column;
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+
+        img {
+            max-height: none;
+            height: 300px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        > a {
+            font-size: 0;
+        }
+
+        .caption {
+            background-color: $color__secondary;
+            border-radius: 0 0 15px 15px;
+            color: $color__secondary-contrast;
+            font-style: normal;
+            margin-top: -15px;
+            padding: 10px 15px;
+            position: relative;
+            text-align: left;
+            width: 100%;
+
+            h3 {
+                margin-bottom: 0;
+            }
+
+            a,
+            .link-title {
+                color: $color__secondary-contrast;
+                font-family: $font__body;
+                font-size: $font__base-size;
+                font-weight: 500;
+
+                @media(min-width: $md) {
+                    font-size: $font__h5-sm-size;
+                }
+            }
+        }
+
+        .caption-complementary & {
+            .caption {
+                background-color: $color__complementary;
+                color: $color__complementary-contrast;
+
+                a,
+                .link-title {
+                    color: $color__complementary-contrast;
+                }
+            }
+        }
+
+        .caption-primary & {
+            .caption {
+                background-color: $color__primary;
+                color: $color__primary-contrast;
+
+                a,
+                .link-title {
+                    color: $color__primary-contrast;
+                }
+            }
+        }
+
+        &.tour-date {
+            h3 {
+                margin: 0 0 1rem;
+            }
+
+            .tour-date-info {
+                margin: 1rem 0;
+
+                ul {
+                    list-style: none;
+                    margin: 0;
+                    padding: 0;
+
+                    li {
+                        padding: 0;
+
+                        &:first-child {
+                            font-weight: 600;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &.layout-horizontal {
+        --grid-layout-gap: 30px !important;
+        align-items: start !important;
+
+        @media (max-width: $lg) {
+            --grid-column-count: 1 !important;
+        }
+
+        @media (min-width: $xl) {
+            --grid-layout-gap: 60px !important;
+        }
+
+        > div {
+            justify-self: center;
+        }
+    }
+
+    .decoration {
+        width: 100%;
+
+        .iiif_presentation {
+            padding: 0 19px 19px 0;
+        }
+    }
+}
+
+.file {
+    border-top: none !important;
+    border-bottom: none !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+
+    .resource.item {
+
+        h3 {
+            color: $color__headings;
+            font-weight: 600;
+            padding: 0 10px;
+            font-size: 1.25rem;
+        }
+    }
+
+    &.left,
+    &.right {
+
+        @media(max-width: $md) {
+            float: none !important;
+            clear: none !important;
+            max-width: none;
+            margin: 0 !important;
+        }
+    }
+
+    &.left .item.resource,
+    &.right .item.resource {
+
+        img {
+            margin-bottom: 0;
+        }
+
+        &:first-of-type {
+            padding-top: 0.6rem !important;
+        }
+    }
+
+    &.left .item.resource {
+        margin: 0 0.5rem 1rem 0 !important;
+    }
+
+    &.right .item.resource {
+        margin: 0 0 1rem 0.5rem !important;
+    }
+
+    &.center {
+        margin-bottom: 1.5rem !important;
+    }
+}

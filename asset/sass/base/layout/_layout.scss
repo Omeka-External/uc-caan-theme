@@ -1,0 +1,148 @@
+html, body {
+    width: 100%;
+}
+
+html {
+    scroll-padding-top: 133px;
+}
+
+body:not(.search) {
+    overflow-x: hidden;
+}
+
+body {
+    padding-top: 133px;
+
+    @media (min-width: $lg) {
+        padding-top: 160px;
+    }
+
+    &.page-with-hero {
+        padding-top: 0;
+
+        &.user-bar {
+            padding-top: 37px;
+        }
+    }
+}
+
+.container {
+    @include container;
+}
+
+.narrow-container {
+    @include container;
+    max-width: 760px;
+}
+
+.medium-container {
+    @include container;
+    max-width: 1140px;
+}
+
+.wide-container {
+    @include container;
+    max-width: 100vw !important;
+    padding: 0 30px;
+
+    @media (min-width: $xl) {
+        padding: 0 40px;
+    }
+}
+
+.fullwidth {
+    @include container;
+    max-width: none;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+
+    @media (min-width: $md) {
+        padding: 0 20px;
+    }
+}
+
+#content {
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+    position: relative;
+
+    @media (min-width: $lg) {
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+    }
+
+    body.items.search & {
+        @media (min-width: $lg) {
+            max-width: 1160px;
+            padding: 3rem 10rem 4rem 4rem;
+        }
+
+        @media (min-width: $xl) {
+            max-width: 1160px;
+            padding: 3rem 10rem 4rem;
+        }
+    }
+
+    .blocks > .fullwidth.has-background:last-child,
+    .blocks > .grid-span-12.has-background:last-child,
+    .blocks .blocks-inner > .fullwidth.has-background:last-child,
+    .blocks .blocks-inner > .grid-span-12.has-background:last-child {
+        margin-bottom: -3rem;
+
+        @media (min-width: $lg) {
+            margin-bottom: -4rem;
+        }
+    }
+}
+
+body.site-page-home #content::after {
+    content: "";
+    background: url("../img/orange-worm.svg") no-repeat right center;
+    background-size: contain;
+    width: 80px;
+    height: 150px;
+    position: absolute;
+    right: calc(50% - 50vw);
+    bottom: 10px;
+
+    @media (min-width: $lg) {
+        bottom: 200px;
+        width: 100px;
+    }
+}
+
+.page-layout-grid {
+    display: grid !important;
+    column-gap: 20px !important;
+    row-gap: 20px !important;
+}
+
+.grid-position-3.grid-span-4 {
+    @media (max-width: $xl) {
+        grid-column-start: 1 !important;
+        grid-column-end: span 6 !important;
+
+        + .grid-span-4 {
+            grid-column-end: span 6 !important;
+        }
+    }
+
+    @media (max-width: $lg) {
+        grid-column-end: span 12 !important;
+
+        + .grid-span-4 {
+            grid-column-end: span 12 !important;
+        }
+    }
+}
+
+[class*="grid-span-"]:not(.fullwidth) {
+    @media (max-width: $lg) {
+        grid-column-start: 1 !important;
+        grid-column-end: span 12 !important;
+        max-width: 100% !important;
+    }
+}
+
+@import "regions";

@@ -1,0 +1,7 @@
+body {
+    background: $color__bg-body; // Fallback for when there is no custom background color defined.
+
+    &.site-page-home {
+        background: url("../img/dirt.webp");
+    }
+}

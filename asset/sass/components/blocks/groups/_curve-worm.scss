@@ -1,0 +1,21 @@
+// curve-worm.svg has a 1440x184 viewBox (12.7778vw tall at fullwidth);
+// below that width the wave stays pinned at the original fixed-height
+// design (170px / -160px), above it height/offset scale with viewport
+// width so background-size: cover never has to crop the artwork.
+.curve-worm {
+    border-radius: 0 0 15px 15px !important;
+    margin-top: max(160px, 12.0245vw);
+    position: relative;
+
+    &::before {
+        content: "";
+        background: url("../img/curve-worm.svg") no-repeat left bottom;
+        background-size: cover;
+        height: max(170px, 12.7778vw);
+        width: 100%;
+        position: absolute;
+        top: min(-160px, -12.0245vw);
+        left: 0;
+        z-index: 1;
+    }
+}

@@ -1,0 +1,46 @@
+// Colors
+$color__primary: var(--primary);
+$color__primary-dark: var(--primary-dark);
+$color__primary-contrast: var(--primary-contrast);
+$color__secondary: var(--secondary);
+$color__secondary-dark: var(--secondary-dark);
+$color__secondary-contrast: var(--secondary-contrast);
+$color__tertiary: var(--tertiary);
+$color__tertiary-dark: var(--tertiary-dark);
+$color__tertiary-contrast: var(--tertiary-contrast);
+$color__accent: var(--accent);
+$color__accent-dark: var(--accent-dark);
+$color__accent-contrast: var(--accent-contrast);
+$color__complementary: var(--complementary);
+$color__complementary-contrast: var(--complementary-contrast);
+$color__success: #179131;
+$color__warning: #ee810d;
+$color__error: #dd001b;
+$color__bg-body: #F8F6F4;
+
+// Grayscale
+$color__black: #231f20;
+$color__gray-33: #555;
+$color__gray-40: #666;
+$color__gray-47: #777;
+$color__gray-60: #999;
+$color__gray-67: #aaa;
+$color__gray-80: #D1D3D4;
+$color__gray-87: #ddd;
+$color__gray-93: #ececec;
+$color__gray-95: #f3f3f3;
+$color__white: #fff;
+
+//Applications
+$color__headings: $color__secondary;
+$color__main-text: $color__black;
+$color__secondary-text: $color__gray-40;
+$color__buttons: $color__accent;
+$color__buttons-dark: $color__accent-dark;
+$color__icons: $color__accent;
+$color__link: $color__accent;
+$color__link-dark: $color__accent-dark;
+$color__menu-drawer: $color__white;
+$color__hr: $color__gray-80;
+$color__light-bg: $color__gray-95;
+$color__disabled: $color__gray-80;
