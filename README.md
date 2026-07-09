@@ -73,8 +73,6 @@ This theme offers 5 different page templates:
 
 ### Assets with animated captions
 
-![aiaa-hover-captions-3](https://github.com/user-attachments/assets/43cef1d7-aa2a-4b97-8762-c0f2f2095c24)
-
 You can add assets whose captions show up with a transition effect over the asset when you hover them.
 
 To do this, you just have to add a "Group" block to your page, then assign a class `image-hover-text` to this block, and optionally, a color class for the overlay: `secondary`, `complementary` or `primary`. If no color class is assigned, it'll default to `secondary`.
