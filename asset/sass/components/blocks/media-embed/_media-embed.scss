@@ -72,6 +72,18 @@
             }
         }
 
+        .caption-tertiary & {
+            .caption {
+                background-color: $color__tertiary;
+                color: $color__tertiary-contrast;
+
+                a,
+                .link-title {
+                    color: $color__tertiary-contrast;
+                }
+            }
+        }
+
         &.tour-date {
             h3 {
                 margin: 0 0 1rem;

@@ -20,7 +20,7 @@
     .resource {
         display: flex;
         flex-direction: column;
-        box-shadow: 0 0 0 0.5px $color__complementary;
+        box-shadow: 0 0 0 1px $color__complementary;
         border-radius: 15px;
         position: absolute;
         margin-bottom: 27px;

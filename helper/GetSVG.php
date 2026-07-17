@@ -20,7 +20,7 @@ class GetSVG extends AbstractHelper
 
         $view = $this->getView();
         
-        $filePath = $view->assetUrl("img/{$name}.svg", null, false, true, true);
+        $filePath = OMEKA_PATH . '/themes/uc-caan/asset/img/' . $name . '.svg';
         return file_get_contents($filePath);
     }
 }

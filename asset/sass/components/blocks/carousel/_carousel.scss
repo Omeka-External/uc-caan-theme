@@ -66,6 +66,13 @@
                 color: $color__primary-contrast;
             }
         }
+
+        .caption-tertiary & {
+            .slide-text {
+                background-color: $color__tertiary;
+                color: $color__tertiary-contrast;
+            }
+        }
     }
 
     .slick-arrow {

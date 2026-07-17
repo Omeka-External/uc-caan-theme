@@ -3,7 +3,7 @@
 <div class="assets">
   <?php foreach ($attachments as $attachment): ?>
     <?php $asset = $attachment['asset']; ?>
-    <div class="asset">
+    <figure class="asset">
         <?php $assetImage = ($asset) ? $this->thumbnail($asset, 'square') : ''; ?>
         <?php $page = (array_key_exists('page', $attachment)) ? $attachment['page'] : null; ?>
         <?php if ($page): ?>
@@ -14,7 +14,7 @@
             <?php echo $assetImage; ?>
         <?php endif; ?>
         <?php if ($attachment['caption'] !== '' || $attachment['alt_link_title'] !== ''): ?>
-        <div class="caption">
+        <figcaption class="caption">
             <?php if ($page): ?>
                 <a href="<?php echo $escape($page->siteUrl()); ?>">
                     <?php $altLinkTitle = ($attachment['alt_link_title'] !== '') ? $escape($attachment['alt_link_title']) : false; ?>
@@ -22,8 +22,8 @@
                 </a>
             <?php endif; ?>
             <?php echo $escape($attachment['caption']); ?>
-        </div>
+        </figcaption>
         <?php endif; ?>
-    </div>
+    </figure>
   <?php endforeach; ?>
 </div>
