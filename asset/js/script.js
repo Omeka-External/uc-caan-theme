@@ -234,6 +234,7 @@ document.addEventListener("DOMContentLoaded", function() {
             const blockHtmlTitle = blockHtml.querySelector('h4');
 
             if (blockHtmlTitle) {
+                blockHtml.style.removeProperty('--block-html-offset');
                 const blockHtmlTitleStyles = window.getComputedStyle(blockHtmlTitle);
                 const blockHtmlTitleMarginBottom = parseFloat(blockHtmlTitleStyles.marginBottom);
                 const blockHtmlInitialBottom = blockHtml.offsetHeight - blockHtmlTitle.offsetTop - blockHtmlTitle.offsetHeight - blockHtmlTitleMarginBottom;
@@ -243,9 +244,18 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
+    // The Roboto webfont (loaded with font-display: swap in layout.phtml) can still be
+    // swapping in after the calc above runs, reflowing a paragraph that was borderline
+    // onto an extra line. That reflow doesn't fire a resize event, so recompute once
+    // fonts are actually ready to catch any wrap change the fallback font didn't have.
+    if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(setImageHoverTextInitialPosition);
+    }
+
     // Image Hover Text Read More links
-    document.querySelectorAll('.image-hover-text .read-more a').forEach(function(imageHoverTextViewMore) {
-        imageHoverTextViewMore.textContent = '';
+    document.querySelectorAll('.image-hover-text .read-more a').forEach(function(el) {
+        el.setAttribute('aria-label', el.textContent.trim());
+        el.textContent = '';
     });
 
     // Prevent browser scroll-into-view when tabbing into .image-hover-text elements.

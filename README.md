@@ -91,6 +91,16 @@ You can customize this color (complementary or primary) by assigning either `cap
 
 <img width="1443" alt="Screenshot 2025-04-20 at 9 33 59 PM" src="https://github.com/user-attachments/assets/30a5e0bd-be10-4a23-8be3-f393fab5a355" />
 
+### Ticker-style Item Carousel
+
+You can make an Item Carousel scroll continuously (like a news ticker) instead of pausing on each slide. Ticker mode renders as a CSS marquee rather than the Slick carousel, so hovering pauses it instantly, mid-scroll.
+
+Assign the class `ticker` to the Item Carousel block in the "Block layout configuration" panel, then set:
+- **Show Title**: "Item title" (in Advanced Options), so titles render as the slide content. Only titles are shown; images and captions are hidden automatically.
+- **Auto slide duration** (Advanced Options): in ticker mode this is reinterpreted as the scroll speed in milliseconds per item — lower values scroll faster (e.g. `500`).
+
+**Items per slide**, **Infinite loop**, **Fade between slides**, and the arrows/dots are all ignored in ticker mode — items scroll edge-to-edge continuously instead.
+
 ### Group blocks with color background
 
 You can add Group blocks and assign some specific classes in order for them to have a solid color background:

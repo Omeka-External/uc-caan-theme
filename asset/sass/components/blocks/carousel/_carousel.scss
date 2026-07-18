@@ -1,7 +1,6 @@
 .carousel-block {
     margin: 0 !important;
-    padding-left: 45px;
-    padding-right: 45px;
+    padding: 0 45px !important;
 
     .slick-slider {
         padding: 3rem 0;
@@ -24,23 +23,31 @@
                 text-decoration: underline;
             }
 
+            .caption p {
+                margin-top: 10px;
+            }
+
             .caption p * {
                 font-style: normal;
+            }
+
+            &:has(.slide-text) img {
+                border-radius: 30px 30px 0 0 !important;
             }
         }
 
         .slide-text {
             background-color: $color__secondary;
-            border-radius: 0 0 15px 15px;
+            border-radius: 0 0 30px 30px;
             color: $color__secondary-contrast;
             font-style: normal;
-            margin-top: -15px;
-            padding: 10px 15px;
+            padding: 20px;
             position: relative;
             text-align: left;
             width: 100%;
 
             .title {
+                font-weight: 400;
                 margin-bottom: 0 !important;
             }
 
@@ -76,18 +83,19 @@
     }
 
     .slick-arrow {
-        border: 1px solid $color__primary;
+        border: 1px solid $color__accent;
         border-radius: 50%;
         height: 40px;
         width: 40px;
 
         &:hover {
-            background-color: $color__primary;
+            background-color: $color__accent;
+            transform: translate(0, -50%) !important;
 
             .slick-prev-icon,
             .slick-next-icon {
                 &::before {
-                    color: $color__primary-contrast;
+                    color: $color__accent-contrast;
                 }
             }
         }
@@ -133,5 +141,79 @@
                 background-color: transparent;
             }
         }
+    }
+}
+
+// Continuous, ticker-style Item Carousel: assign the `ticker` class to the
+// block via the "Block layout configuration" panel. Rendered as a CSS
+// marquee (not Slick) so hovering pauses it instantly, mid-scroll.
+.ticker .carousel-block {
+    overflow: hidden;
+    padding-left: 0;
+    padding-right: 0;
+
+    .ticker-track {
+        animation-name: ticker-scroll;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+        display: flex;
+        gap: 20px;
+        width: max-content;
+
+        &:hover {
+            animation-play-state: paused;
+        }
+
+        > div {
+            display: flex;
+            flex-shrink: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .slide-text {
+            display: flex;
+            background-color: $color__complementary;
+            border: 1px solid $color__complementary;
+            border-radius: 5px;
+            color: $color__complementary-contrast;
+            padding: 4px 10px;
+            transition: background-color 0.3s ease;
+
+            .title {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: 300px;
+            }
+
+            .caption {
+                display: none;
+            }
+        }
+
+        > div:hover .slide-text {
+            background-color: $color__white;
+            color: $color__black;
+        }
+
+        // Combined with the item-carousel.phtml template's loading="lazy"
+        // attribute, staying display: none (no layout box) means browsers
+        // with native lazy-loading never fetch these images at all.
+        img {
+            display: none;
+        }
+    }
+}
+
+@keyframes ticker-scroll {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
     }
 }

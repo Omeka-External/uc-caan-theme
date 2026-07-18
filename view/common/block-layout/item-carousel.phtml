@@ -42,7 +42,7 @@ $valueLang = $filterLocale ? [$lang, ''] : null;
 			}
 			
 			if ($media) {
-				$slide = $this->thumbnail($media, $this->thumbnailType) . $textDiv;
+				$slide = $this->thumbnail($media, $this->thumbnailType, ['loading' => 'lazy']) . $textDiv;
 				echo '<div>' . $item->linkRaw($slide) . '</div>';
 			} else {
 				$slide = $textDiv;
@@ -54,7 +54,23 @@ $valueLang = $filterLocale ? [$lang, ''] : null;
 
 	<script>
 	$(document).ready(function() {
-		$('.<?php echo $carouselID; ?>')
+		var $carousel = $('.<?php echo $carouselID; ?>');
+		var isTicker = $carousel.closest('.block').hasClass('ticker');
+
+		if (isTicker) {
+			// Slick's autoplay only schedules the *next* transition, so it can't
+			// interrupt a transition already in progress on hover. A CSS animation
+			// pauses instantly instead, so ticker mode bypasses Slick entirely.
+			var itemCount = $carousel.children().length;
+			var duration = itemCount * <?php echo max(1, (int) $this->autoSlideDuration ?: 500); ?>;
+			$carousel
+				.addClass('ticker-track')
+				.append($carousel.html())
+				.css('animation-duration', duration + 'ms');
+			return;
+		}
+
+		$carousel
 			.slick({
 				slidesToShow: <?php echo $this->perPage ?>,
 				slidesToScroll: 1,
