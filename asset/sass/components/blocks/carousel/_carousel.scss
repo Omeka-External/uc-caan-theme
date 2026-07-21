@@ -18,6 +18,9 @@
         a {
             color: $color__secondary;
             text-decoration: none;
+            overflow: hidden;
+            border-radius: 30px;
+            display: block;
 
             .title {
                 text-decoration: underline;
