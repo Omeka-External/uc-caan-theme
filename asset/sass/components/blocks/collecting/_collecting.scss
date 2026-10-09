@@ -17,6 +17,43 @@
             box-shadow: none;
         }
 
+        .required-indicator {
+            color: $color__error;
+            font-weight: 700;
+            margin-left: 0.15em;
+        }
+
+        .required-label {
+            color: $color__secondary-text;
+            font-size: 0.8125rem; // 13px
+            font-weight: 400;
+            white-space: nowrap;
+        }
+
+        input,
+        textarea,
+        select {
+            &:user-invalid,
+            &.input-error {
+                border-color: $color__error;
+                border-width: 2px;
+            }
+        }
+
+        .field .messages {
+            list-style: none;
+            margin: 8px 0 0;
+            padding: 0;
+            color: $color__error;
+            font-weight: 700;
+
+            li::before {
+                @include font-awesome;
+                content: "\f071";
+                margin-right: 0.5em;
+            }
+        }
+
         input[type=submit] {
             float: right;
         }

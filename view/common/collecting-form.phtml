@@ -1,0 +1,39 @@
+<?php
+/**
+ * Render a Collecting form with accessible required-field labels.
+ */
+$escape = $this->plugin('escapeHtml');
+$translate = $this->plugin('translate');
+$labelableTypes = ['text', 'textarea', 'select', 'email', 'url', 'number', 'checkbox', 'file'];
+
+foreach ($form->getElements() as $element) {
+    if ($element->getOption('uc_caan_prepared')) {
+        continue; // The form is cached and may be rendered more than once.
+    }
+    $element->setOption('uc_caan_prepared', true);
+
+    if (!$element->getAttribute('id') && in_array($element->getAttribute('type'), $labelableTypes)) {
+        $element->setAttribute('id', $element->getName());
+    }
+
+    $label = $element->getLabel();
+    $showRequired = $element->getOption('show_required');
+    $isRequired = null === $showRequired ? $element->getAttribute('required') : $showRequired;
+    if (!$isRequired || null === $label || '' === $label) {
+        continue;
+    }
+    $labelOptions = $element->getLabelOptions();
+    $label = $translate($label);
+    if (empty($labelOptions['disable_html_escape'])) {
+        $label = $escape($label);
+    }
+    $labelOptions['disable_html_escape'] = true;
+    $element->setLabelOptions($labelOptions);
+    $element->setLabel(sprintf(
+        '%s<span class="required-indicator" aria-hidden="true">*</span> <span class="required-label">(%s)</span>',
+        $label,
+        $escape($translate('Required'))
+    ));
+}
+
+echo $this->form($form);
